@@ -15,9 +15,11 @@
  */
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
+        /*T(n) = O(n)
+        S(n) = O(n)*/
         List <Integer> list = new ArrayList<>();
         helper(root, list);
-        return list;
+       return list;
     }
     private void helper(TreeNode root, List<Integer> list){
         if(root == null) return;
