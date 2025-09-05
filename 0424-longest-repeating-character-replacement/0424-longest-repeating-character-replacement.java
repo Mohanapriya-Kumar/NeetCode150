@@ -9,8 +9,9 @@ class Solution {
         int maxf = 0;
 
         while(right < str.length()){
-            count[str.charAt(right)-'A']++;
-            maxf = Math.max(maxf, count[str.charAt(right)-'A']);
+            // count[str.charAt(right)-'A']++;
+            // maxf = Math.max(maxf, count[str.charAt(right)-'A']);
+            maxf = Math.max(maxf, ++count[str.charAt(right)-'A']);
             while((right - left + 1 - maxf) > k){//width - longest(crt) = wht I can change
                 count[str.charAt(left) - 'A']--;//shrink from left
                 left++;
