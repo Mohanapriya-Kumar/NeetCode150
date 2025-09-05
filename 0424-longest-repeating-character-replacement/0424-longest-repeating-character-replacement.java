@@ -6,11 +6,11 @@ class Solution {
          int[] count = new int[26];
         int left = 0, right = 0;
         int res = 0;
-        int count = 0;
+        int maxf = 0;
 
         while(right < str.length()){
             count[str.charAt(right)-'A']++;
-            maxf = Math.max(count, count[str.charAt(right)-'A']);
+            maxf = Math.max(maxf, count[str.charAt(right)-'A']);
             while((right - left + 1 - maxf) > k){//width - longest(crt) = wht I can change
                 count[str.charAt(left) - 'A']--;//shrink from left
                 left++;
