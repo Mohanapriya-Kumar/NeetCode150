@@ -1,19 +1,20 @@
 class Solution {
-    public int characterReplacement(String s, int k) {
-        /*Need to maintin both charaters and its count
-        T(n) = O(n) n - len of s
-        S(n) = O(m) m - no of unique chars*/
-        int[] count = new int[26];
-        int l = 0, maxf = 0, res = 0;
-        for(int r = 0; r < s.length(); r++){
-            count[s.charAt(r) - 'A']++;
-            maxf = Math.max(maxf, count[s.charAt(r) - 'A']);
-            if((r - l + 1) - maxf > k){//width - longest(crt) = wht I can change
-                count[s.charAt(l) - 'A']--; //shrink from left
-                l++;
+    public int characterReplacement(String str, int k) {
+         int[] occurance = new int[26];
+        int left = 0, right = 0;
+        int maxLen = 0;
+        int maxOccurrance = 0;
+
+        while(right < str.length()){
+            maxOccurrance = Math.max(maxOccurrance, ++occurance[str.charAt(right)-'A']);
+            while(right-left+1 - maxOccurrance > k){
+                occurance[str.charAt(left)-'A']--;
+                left++;
             }
-            res = Math.max(res, r - l + 1); 
+            maxLen = Math.max(maxLen,right-left+1);
+            right++;
         }
-        return res;
+
+        return maxLen;
     }
 }
