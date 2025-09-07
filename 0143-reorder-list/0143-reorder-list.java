@@ -15,23 +15,23 @@ class Solution {
         S(n) = O(1)*/
         ListNode slow = head;
         ListNode fast = head;
-        while (fast != null && fast.next != null) {
+        while(fast != null && fast.next != null){
             fast = fast.next.next;
             slow = slow.next;
-        } //when fast moves double the speed of slow, slow is in mid when fast reaches dest
-          //reverse the second half
+        }//when fast moves double the speed of slow, slow is in mid when fast reaches dest
+        //reverse the second half
         ListNode scurr = slow.next;
         ListNode prev = slow.next = null;
-        while (scurr != null) {
+        while(scurr != null){
             ListNode nxt = scurr.next;
             scurr.next = prev;
-            prev = scurr;
+            prev = scurr ;
             scurr = nxt;
         } //head of revd list is prev
-          //merge the lists
+        //merge the lists
         ListNode first = head;
-        ListNode second = prev;
-        while (second != null) {
+        ListNode second = prev; 
+        while(second != null){
             ListNode tmp1 = first.next;
             ListNode tmp2 = second.next;
             first.next = second;
