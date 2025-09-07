@@ -10,16 +10,32 @@
  */
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
-        /*Linear Merge Approach
-        T(n) = O(kN);
-        S(n) = O(1)*/
-        if(lists == null || lists.length == 0) return null;
-        ListNode result = lists[0];
-        for(int i = 1; i < lists.length; i++){
-            result = mergeList(result, lists[i]);
+    //     /*Linear Merge Approach
+    //     T(n) = O(kN);
+    //     S(n) = O(1)*/
+    //     if(lists == null || lists.length == 0) return null;
+    //     ListNode result = lists[0];
+    //     for(int i = 1; i < lists.length; i++){
+    //         result = mergeList(result, lists[i]);
+    //     }
+    //     return result;
+    //}
+    /*Queue Pairwise Merging Approach
+    T(n) = O(Nlogk)
+    S(n) = O(k) N: Tot no of nodes in all lists, k: no of ip lists*/
+        if(lists.length == 0) return null;
+        Queue<ListNode> q = new LinkedList<>();//Queue is a LL
+        for(ListNode list : lists){
+            q.add(list);
         }
-        return result;
+        while(q.size() > 1){//there is a pair
+            ListNode l1 = q.poll();
+            ListNode l2 = q.poll();
+            q.add(mergeList(l1,l2));
+        }
+        return q.poll();
     }
+
     private ListNode mergeList(ListNode list1, ListNode list2){
         ListNode dummy = new ListNode(0);
         ListNode curr = dummy;
