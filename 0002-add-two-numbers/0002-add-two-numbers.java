@@ -9,6 +9,9 @@
  * }
  */
 class Solution {
+    /*Logic: Already in conventional reverse order so simply add and use carry & sum
+    T(n) = O(n+m)
+    S(n ) = O(1) extra; O(max(m,n)) for op list*/
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(0);
         ListNode curr = dummy;
