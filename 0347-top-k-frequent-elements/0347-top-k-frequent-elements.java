@@ -1,5 +1,5 @@
 class Solution {
-    public int[] topKFrequent(int[] nums, int k) {
+    public int[] topKFrequent(int[] nums, int k) {//bucket sort
         /*Storing map count for num:freq mapping, Array freq with each index value: AL of elements whose count = i(index of freq Array)
         T(n) = O(n);
         S(n) = O(n)*/
