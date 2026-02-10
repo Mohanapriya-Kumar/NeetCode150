@@ -1,5 +1,9 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
+        /* Prefix * Postfix for num[i]
+        T(n) = O(n);
+        S(n) = O(n) for res arr
+        */
         int n = nums.length;
         int[] res = new int[n];
         res[0] = 1;
