@@ -21,17 +21,25 @@ r8 |     6     |     7     |     8     |
         //shift left 00000001 by val for bit masking & gives > 1 if = else & gives 0 
         int[] rows = new int[9];
         int[] cols = new int[9];
-        int[] squares = new int[9];
-        for(int r = 0; r < 9; r++){
-            for(int c = 0; c < 9; c++){
-                if(board[r][c] == '.') continue;
-                int val = board[r][c] - '1';
-                if((rows[r] & (1 << val)) > 0 || (cols[c] & (1 << val)) > 0 || (squares[(r/3)*3 + c/3] & (1 << val)) > 0) return false;
-                rows[r] |= (1 << val);
-                cols[c] |= (1 << val);
-                squares[(r/3)*3 + c/3] |= (1 << val);
+        int[] boxes = new int[9];
+        for (int row = 0; row < 9; row++) {
+            for (int col = 0; col < 9; col++) {
+                if (board[row][col] == '.') {
+                    continue;
+                }
+                int digit = board[row][col] - '1';
+                int mask = 1 << digit;
+                int boxIndex = (row / 3) * 3 + (col / 3);
+                if ((rows[row] & mask) != 0 ||
+                    (cols[col] & mask) != 0 ||
+                    (boxes[boxIndex] & mask) != 0) {
+                    return false;
+                }
+                rows[row] |= mask;
+                cols[col] |= mask;
+                boxes[boxIndex] |= mask;
             }
         }
-        return true;
+        return true; 
     }
 }
