@@ -10,8 +10,6 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        /*T(n) = O(n)
-        S(n) = O(1)*/
         ListNode curr = head;
         ListNode prev = null;
         while(curr != null){
